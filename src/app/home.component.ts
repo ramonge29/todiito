@@ -1,8 +1,8 @@
-/* import { Component } from "@angular/core";
-import { Http2ServerRequest } from "http2";
+import { Component } from "@angular/core";
 
 @Component({
-    selector: 'Todiito-home-page',
+    selector: 'todiito-home-page',
+    standalone: true ,
     template:`
         <section>
             <h2 class="text-center text-3xl"> Home Page </h2>
@@ -11,4 +11,4 @@ import { Http2ServerRequest } from "http2";
     `,
 })
 
-export class HomePageCompenent {} */
+export class HomePageComponent {}
