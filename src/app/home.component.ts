@@ -1,14 +1,14 @@
 import { Component } from "@angular/core";
+import { FeatureSectionComponent } from "./feature-sections.component";
+import { HeroSectionComponent } from "./hero-sections.component";
 
 @Component({
     selector: 'todiito-home-page',
     standalone: true ,
     template:`
-        <section>
-            <h2 class="text-center text-3xl"> Home Page </h2>
-            <p class="text-center"> Welcome a Todiito Home Page </p>
-        </section>
+        <todiito-hero-section></todiito-hero-section>
+        <todiito-feature-section></todiito-feature-section>
     `,
+    imports: [HeroSectionComponent, FeatureSectionComponent],
 })
-
 export class HomePageComponent {}
