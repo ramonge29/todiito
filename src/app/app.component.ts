@@ -1,10 +1,7 @@
-import { Component, inject } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
-import { MatAnchor } from '@angular/material/button';
+import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { WalletStore } from '@heavy-duty/wallet-adapter';
 import { HdWalletMultiButtonComponent } from '@heavy-duty/wallet-adapter-material';
-import { ShyftApiService } from './shyft-api.service';
+
 
 
 @Component({
@@ -12,8 +9,8 @@ import { ShyftApiService } from './shyft-api.service';
   imports: [RouterModule, HdWalletMultiButtonComponent],
   selector: 'todiito-root',
   template: `
-    <header>
-      <h1 class="text-5xl text-center mb-4">Hola mundo</h1>
+    <header class="py-8">
+      <h1 class="text-5xl text-center mb-4">Hola Mundo</h1>
       <div class="flex justify-center">
         <hd-wallet-multi-button></hd-wallet-multi-button>
       </div>

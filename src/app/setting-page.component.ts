@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+/* import { Component } from "@angular/core";
 
 @Component({
     selector: 'Todiito-setting-page',
@@ -10,4 +10,4 @@ import { Component } from "@angular/core";
     `,
 })
 
-export class SettingPageCompenent {}
+export class SettingPageCompenent {} */
