@@ -9,10 +9,10 @@ export const appRoutes: Route[] = [
   {
     path: 'settings',
     loadComponent: () =>
-      import('./settings.component').then((m) => m.SettingPageComponent),
+      import('./balance.component').then((m) => m.BalancePageComponent),
   },
   {
     path: '**',
-    redirectTo: ''
-  }
+    redirectTo: '',
+  },
 ];

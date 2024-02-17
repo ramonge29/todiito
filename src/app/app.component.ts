@@ -13,14 +13,14 @@ import { ShyftApiService } from './shyft-api.service';
   selector: 'todiito-root',
   template: `
     <header class="py-8">
-      <h1 class="text-5xl text-center mb-4">Hola Mundo</h1>
+      <h1 class="text-5xl text-center mb-4">Todiito APP</h1>
       <div class="flex justify-center mb-4">
         <hd-wallet-multi-button></hd-wallet-multi-button>
       </div>
-      @if (account()){
+      @if (account()) {
         <div>
-          <img [src]="account()?.info?.image" class="w-8"/>
-          <p>{{account()?.balance}}</p>
+          <img [src]="account()?.info?.image" class="w-8" />
+          <p>{{ account()?.balance }}</p>
         </div>
       }
       <nav>
@@ -29,7 +29,12 @@ import { ShyftApiService } from './shyft-api.service';
             <a [routerLink]="['']" mat-raised-button> Home</a>
           </li>
           <li>
-            <a [routerLink]="['settings']" mat-raised-button> Settings</a>
+            <a [routerLink]="['Balance']" mat-raised-button> Balance</a>
+          </li>
+          <li>
+            <a [routerLink]="['transaction history']" mat-raised-button
+              >transaction history</a
+            >
           </li>
         </ul>
       </nav>
@@ -40,12 +45,12 @@ import { ShyftApiService } from './shyft-api.service';
   `,
 })
 export class AppComponent {
-  title = 'todiito';
   private readonly _ShyftApiService = inject(ShyftApiService);
   private readonly _walletStore = inject(WalletStore);
   private readonly _publicKey = toSignal(this._walletStore.publicKey$);
 
   readonly account = computedAsync(
-    () => this._ShyftApiService.getAccount(this._publicKey()?.toBase58()), { requireSync: true },
+    () => this._ShyftApiService.getAccount(this._publicKey()?.toBase58()),
+    { requireSync: true },
   );
 }
