@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import { FeatureSectionComponent } from './feature-sections.component';
-import { HeroSectionComponent } from './hero-sections.component';
+import { BalanceSectionComponent } from './balance-section.component';
+import { FooterSectionComponent } from './footer-sections.component';
 
 @Component({
   selector: 'todiito-home-page',
   standalone: true,
   template: `
-    <todiito-hero-section></todiito-hero-section>
-    <todiito-feature-section></todiito-feature-section>
+    <todiito-balance-section></todiito-balance-section>
+    <todiito-footer-section></todiito-footer-section>
   `,
-  imports: [HeroSectionComponent, FeatureSectionComponent],
+  imports: [BalanceSectionComponent, FooterSectionComponent],
 })
 export class HomePageComponent {}

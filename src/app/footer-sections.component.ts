@@ -1,17 +1,16 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'todiito-feature-section',
+  selector: 'todiito-footer-section',
   standalone: true,
-  template:`
+  template: `
     <section class="p-16">
       <ul class="flex justify-center items-center gap-4">
         <li>increible</li>
         <li>fantabuloso</li>
         <li>Aqui no se anda con tonteria</li>
       </ul>
-    </section>  
-  `, 
+    </section>
+  `,
 })
-
-export class FeatureSectionComponent {}
+export class FooterSectionComponent {}

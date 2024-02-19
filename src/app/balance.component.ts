@@ -1,13 +1,17 @@
 import { Component } from '@angular/core';
+import { BalanceSectionComponent } from './balance-section.component';
+import { TransactionSectionComponent } from './transaction-section.component';
 
 @Component({
   selector: 'todiito-balance-page',
   standalone: true,
+  imports: [BalanceSectionComponent, TransactionSectionComponent],
   template: `
-    <section>
-      <h2 class="text-center text-3xl">Balance</h2>
-      <p class="text-center">no hay mucho que ver por ahora</p>
-    </section>
+    <div class="">
+      <todiito-balance-section></todiito-balance-section>
+      Esto es una prueba
+      <todiito-transaction-section></todiito-transaction-section>
+    </div>
   `,
 })
 export class BalancePageComponent {}
