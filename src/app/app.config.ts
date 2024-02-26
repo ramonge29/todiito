@@ -7,9 +7,10 @@ import { provideWalletAdapter } from '@heavy-duty/wallet-adapter';
 import { appRoutes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(appRoutes),
-  provideAnimationsAsync(),
-  provideWalletAdapter(),
-  provideHttpClient(),
-],
+  providers: [
+    provideRouter(appRoutes),
+    provideAnimationsAsync(),
+    provideWalletAdapter(),
+    provideHttpClient(), provideAnimationsAsync(),
+  ],
 };

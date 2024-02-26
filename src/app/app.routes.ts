@@ -7,12 +7,12 @@ export const appRoutes: Route[] = [
       import('./home.component').then((m) => m.HomePageComponent),
   },
   {
-    path: 'settings',
+    path: 'balance',
     loadComponent: () =>
-      import('./settings.component').then((m) => m.SettingPageComponent),
+      import('./balance.component').then((m) => m.BalancePageComponent),
   },
   {
     path: '**',
-    redirectTo: ''
-  }
+    redirectTo: '',
+  },
 ];
