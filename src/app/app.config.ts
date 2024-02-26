@@ -11,6 +11,6 @@ export const appConfig: ApplicationConfig = {
     provideRouter(appRoutes),
     provideAnimationsAsync(),
     provideWalletAdapter(),
-    provideHttpClient(),
+    provideHttpClient(), provideAnimationsAsync(),
   ],
 };

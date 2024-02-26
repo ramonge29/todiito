@@ -1,31 +1,50 @@
 import { Component, inject } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
-import { WalletStore } from '@heavy-duty/wallet-adapter';
+import { MatCard } from '@angular/material/card';
+import { MatTableModule } from '@angular/material/table';
+import { injectPublicKey } from '@heavy-duty/wallet-adapter';
 import { computedAsync } from 'ngxtension/computed-async';
 import { ShyftApiService } from './shyft-api.service';
 
 @Component({
   selector: 'todiito-transaction-section',
   standalone: true,
+  imports: [MatCard, MatTableModule],
   template: `
-    <section>
-      <p class="text-center">Tu balance actual es:</p>
-      @if (account()) {
-        <div>
-          <img [src]="account()?.info?.image" class="w-8" />
-          <p>{{ account()?.balance }}</p>
-        </div>
+    <mat-card class="w-[500px] px-4 py-8 justify-center m-auto mt-5">
+      <h2 class="text-center text-3xl mb-3">Historial de transacciones</h2>
+      @if (!transaction()) {
+        <p class="text-center justify-center items-center">
+          Contecta tu Wallet para ver las transcciones
+        </p>
+        /* */
+      } @else if (transaction()?.length === 0) {
+        <p>No hay transacciones disponibles.</p>
+      } @else {
+        <table mat-table [dataSource]="transaction() ?? []">
+          <ng-container matColumnDef="type">
+            <th mat-Header-cell *matHeaderCellDef>Type</th>
+            <td mat-cell *matCellDef="let element">{{ element.type }}</td>
+          </ng-container>
+          <ng-container matColumnDef="Status">
+            <th mat-Header-cell *matHeaderCellDef>Status</th>
+            <td mat-cell *matCellDef="let element">{{ element.status }}</td>
+          </ng-container>
+          <ng-container matColumnDef="Timestamp">
+            <th mat-Header-cell *matHeaderCellDef>Timestamp</th>
+            <td mat-cell *matCellDef="let element">{{ element.timestamp }}</td>
+          </ng-container>
+        </table>
       }
-    </section>
+    </mat-card>
   `,
 })
 export class TransactionSectionComponent {
   private readonly _ShyftApiService = inject(ShyftApiService);
-  private readonly _walletStore = inject(WalletStore);
-  private readonly _publicKey = toSignal(this._walletStore.publicKey$);
+  private readonly _publicKey = injectPublicKey();
 
-  readonly account = computedAsync(
-    () => this._ShyftApiService.getAccount(this._publicKey()?.toBase58()),
+  readonly displayedColumns = ['type', 'status', 'timestamp'];
+  readonly transaction = computedAsync(
+    () => this._ShyftApiService.getTransactions(this._publicKey()?.toBase58()),
     { requireSync: true },
   );
 }

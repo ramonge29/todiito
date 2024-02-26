@@ -8,7 +8,7 @@ import { ShyftApiService } from './shyft-api.service';
   selector: 'todiito-balance-section',
   standalone: true,
   template: `
-    <section>
+    <section class="text-black bg-#434343 boder-4 border-black">
       <p class="text-center">Tu balance actual es:</p>
       @if (account()) {
         <div class="flex justify-center items-center gap-4 pt-8">
